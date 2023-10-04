@@ -1,10 +1,12 @@
 const Product = require("../models/product");
+
 exports.getAddproducts = (req, res, next) => {
-  res.render("add-product", {
+  res.render("admin/add-product", {
     pageTitle: "Add Product",
     path: "admin/add-product",
   });
 };
+
 exports.saveGetProducts = (req, res, next) => {
   const product = new Product(req.body.title);
   product.save();
@@ -13,10 +15,10 @@ exports.saveGetProducts = (req, res, next) => {
 
 exports.getProducts = (req, res, next) => {
   Product.fetchAll((products) => {
-    res.render("shop", {
+    res.render("admin/products", {
       prods: products,
-      pageTitle: "shop",
-      path: "/",
+      pageTitle: "Admin Products",
+      path: "admin/products",
     });
   });
 };
